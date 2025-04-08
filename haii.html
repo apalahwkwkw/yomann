@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Surat Ulang Tahun</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: 'Comic Sans MS', cursive;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .envelope {
+      position: relative;
+      width: 320px;
+      height: 200px;
+      background-color: #ff9a9e;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      margin-top: 20px;
+      perspective: 1000px;
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background-color: #f06292;
+      border-bottom: 4px solid #fff;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transition: transform 0.8s ease-in-out;
+      transform-origin: top;
+      z-index: 3;
+    }
+
+    .letter {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 180px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.8s ease-in-out;
+      z-index: 1;
+      transform: translateY(100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .envelope.opened .flap {
+      transform: rotateX(-180deg);
+    }
+
+    .envelope.opened .letter {
+      transform: translateY(0%);
+    }
+
+    .letter-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .letter h2 {
+      margin: 0 0 10px;
+      color: #ff4081;
+    }
+
+    .letter p {
+      margin: 0;
+      color: #333;
+    }
+
+    .cat-gif {
+      width: 80px;
+      height: auto;
+      margin-left: 10px;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .envelope.opened .cat-gif {
+      opacity: 1;
+    }
+
+    .open-btn {
+      padding: 10px 20px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    @media (max-width: 480px) {
+  .envelope {
+    width: 90vw;
+    height: 180px;
+  }
+
+  .flap {
+    height: 90px;
+  }
+
+  .letter {
+    height: 160px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .cat-gif {
+    margin: 10px 0 0 0;
+    width: 60px;
+  }
+
+  .letter-content {
+    text-align: center;
+  }
+
+  .open-btn {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+
+  .confetti {
+    width: 10px;
+    height: 10px;
+  }
+
+  .paper-worm {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <button class="open-btn" onclick="toggleEnvelope()">Buka/Tutup Surat 💌</button>
+
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+    <div class="letter">
+      <div class="letter-content">
+        <h2>Selamat Ulang Tahun! 🎉</h2>
+        <p>Semoga hidupmu selalu penuh kebahagiaan, cinta, dan keberkahan 💖🎂</p>
+      </div>
+      <img src="cat.gif" alt="Kucing lucu" class="cat-gif">
+    </div>
+  </div>
+
+  <script>
+    function toggleEnvelope() {
+      document.getElementById('envelope').classList.toggle('opened');
+    }
+  </script>
+</body>
+</html>
